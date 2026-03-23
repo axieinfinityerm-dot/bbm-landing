@@ -81,7 +81,9 @@ const Contact = () => {
                 <Phone className="w-6 h-6" style={{ color: '#00bc60' }} />
               </div>
               <h3 className="text-white font-bold text-lg mb-2">Telefon</h3>
-              <p className="text-gray-400">+90 (XXX) XXX XX XX</p>
+              <a href="tel:+905466630645" className="text-gray-400 hover:text-white transition-colors">
+                +(90) 546 663 0645
+              </a>
             </div>
 
             <div 
@@ -93,7 +95,9 @@ const Contact = () => {
                 <Mail className="w-6 h-6" style={{ color: '#00bc60' }} />
               </div>
               <h3 className="text-white font-bold text-lg mb-2">E-posta</h3>
-              <p className="text-gray-400">info@bbmgrupproje.com</p>
+              <a href="mailto:info@bbmgrupproje.com" className="text-gray-400 hover:text-white transition-colors break-all">
+                info@bbmgrupproje.com
+              </a>
             </div>
 
             <div 
@@ -105,7 +109,23 @@ const Contact = () => {
                 <MapPin className="w-6 h-6" style={{ color: '#00bc60' }} />
               </div>
               <h3 className="text-white font-bold text-lg mb-2">Adres</h3>
-              <p className="text-gray-400">Türkiye</p>
+              <p className="text-gray-400 mb-3 leading-relaxed">
+                Veznedar Sk. No:35, Harbiye, Sokullu Mehmet Paşa Cd. NO:13A B20-B15-Z13, 06460 Çankaya/Ankara, Türkiye
+              </p>
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=Veznedar+Sk.+No:35,+Harbiye,+Sokullu+Mehmet+Paşa+Cd.+NO:13A+B20-B15-Z13,+06460+Çankaya/Ankara,+Türkiye"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium transition-colors"
+                style={{ color: '#00bc60' }}
+                onMouseEnter={(e) => e.target.style.color = '#00a855'}
+                onMouseLeave={(e) => e.target.style.color = '#00bc60'}
+              >
+                Google Maps'te Görüntüle
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
             </div>
           </div>
 

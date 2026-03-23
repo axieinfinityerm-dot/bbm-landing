@@ -31,9 +31,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-white tracking-tight">
-              BBM GRUP <span style={{ color: '#00bc60' }}>PROJE</span>
-            </h1>
+            <img 
+              src="https://customer-assets.emergentagent.com/job_bbm-landing/artifacts/4y9x0fbw_bbm-logo-t-300x82.png"
+              alt="BBM Grup Proje"
+              className="h-12 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}

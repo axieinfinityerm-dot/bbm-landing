@@ -20,11 +20,12 @@ const Footer = () => {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2 mb-4">
-              <Building2 className="w-8 h-8" style={{ color: '#00bc60' }} />
-              <h3 className="text-2xl font-bold text-white">
-                BBM GRUP <span style={{ color: '#00bc60' }}>PROJE</span>
-              </h3>
+            <div className="mb-4">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_bbm-landing/artifacts/4y9x0fbw_bbm-logo-t-300x82.png"
+                alt="BBM Grup Proje"
+                className="h-16 w-auto"
+              />
             </div>
             <p className="text-gray-400 leading-relaxed">
               Mühendislik ve mimarlık alanında güvenilir çözümler sunarak, projelerinizi hayata geçiriyoruz.
@@ -100,15 +101,34 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 flex-shrink-0 mt-1" style={{ color: '#00bc60' }} />
-                <span className="text-gray-400">+90 (XXX) XXX XX XX</span>
+                <a href="tel:+905466630645" className="text-gray-400 hover:text-white transition-colors">
+                  +(90) 546 663 0645
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 flex-shrink-0 mt-1" style={{ color: '#00bc60' }} />
-                <span className="text-gray-400">info@bbmgrupproje.com</span>
+                <a href="mailto:info@bbmgrupproje.com" className="text-gray-400 hover:text-white transition-colors break-all">
+                  info@bbmgrupproje.com
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 flex-shrink-0 mt-1" style={{ color: '#00bc60' }} />
-                <span className="text-gray-400">Türkiye</span>
+                <div>
+                  <p className="text-gray-400 mb-2">
+                    Veznedar Sk. No:35, Harbiye, Sokullu Mehmet Paşa Cd. NO:13A B20-B15-Z13, 06460 Çankaya/Ankara
+                  </p>
+                  <a 
+                    href="https://www.google.com/maps/search/?api=1&query=Veznedar+Sk.+No:35,+Harbiye,+Sokullu+Mehmet+Paşa+Cd.+NO:13A+B20-B15-Z13,+06460+Çankaya/Ankara,+Türkiye"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm transition-colors inline-flex items-center gap-1"
+                    style={{ color: '#00bc60' }}
+                    onMouseEnter={(e) => e.target.style.color = '#00a855'}
+                    onMouseLeave={(e) => e.target.style.color = '#00bc60'}
+                  >
+                    Haritada Göster
+                  </a>
+                </div>
               </li>
             </ul>
           </div>
