@@ -126,8 +126,36 @@ export const stats = [
 export const ayyildizProject = {
   title: "Malatya Ayyıldız Projesi",
   subtitle: "Molozların Üstünde Umut",
-  description: "Büyük Malatya Depremi'nin ardından şehir sustu; sadece molozlar değil, hatıralar da yerle bir olmuştu. Ancak zamanla sessizliğin içinden bir fikir doğdu. Toprağın altına gömülen her şeyin üzerine, umutla bir yapı inşa edilmeliydi. Ayyıldız Projesi bu düşünceden doğdu; bir rekreasyon alanı değil, hafızası olan bir yer olarak tasarlandı. Mekânın formu, Türk bayrağının dalgalanışından ilham aldı. Çünkü bu proje sadece toprağa değil, ruhlara da dokunmalıydı."
+  description: "Büyük Malatya Depremi'nin ardından şehir sustu; sadece molozlar değil, hatıralar da yerle bir olmuştu. Ancak zamanla sessizliğin içinden bir fikir doğdu. Toprağın altına gömülen her şeyin üzerine, umutla bir yapı inşa edilmeliydi. Ayyıldız Projesi bu düşünceden doğdu; bir rekreasyon alanı değil, hafızası olan bir yer olarak tasarlandı. Mekânın formu, Türk bayrağının dalgalanışından ilham aldı. Çünkü bu proje sadece toprağa değil, ruhlara da dokunmalıydı.",
+  images: [
+    "https://customer-assets.emergentagent.com/job_bbm-landing/artifacts/wgz34vyz_Image10_000%20%28NXPowerLite%20Copy%29.png",
+    "https://customer-assets.emergentagent.com/job_bbm-landing/artifacts/9p272e1m_Image13%20%28NXPowerLite%20Copy%29.png",
+    "https://customer-assets.emergentagent.com/job_bbm-landing/artifacts/6r2uacyg_Image17_000%20%28NXPowerLite%20Copy%29.png",
+    "https://customer-assets.emergentagent.com/job_bbm-landing/artifacts/487stjjr_Image18%20%28NXPowerLite%20Copy%29.png",
+    "https://customer-assets.emergentagent.com/job_bbm-landing/artifacts/oxzlzznt_Image21%20%28NXPowerLite%20Copy%29.png"
+  ]
 };
+
+export const heroSlides = [
+  {
+    id: 1,
+    image: "https://customer-assets.emergentagent.com/job_bbm-landing/artifacts/wgz34vyz_Image10_000%20%28NXPowerLite%20Copy%29.png",
+    title: "Güvenilir Deneyim",
+    subtitle: "Sizin ihtiyaçlarınız için kusursuz çözümler sunuyoruz"
+  },
+  {
+    id: 2,
+    image: "https://customer-assets.emergentagent.com/job_bbm-landing/artifacts/oxzlzznt_Image21%20%28NXPowerLite%20Copy%29.png",
+    title: "Profesyonel Proje Yönetimi",
+    subtitle: "Her projede en yüksek kalite standartlarını garanti ediyoruz"
+  },
+  {
+    id: 3,
+    image: "https://customer-assets.emergentagent.com/job_bbm-landing/artifacts/487stjjr_Image18%20%28NXPowerLite%20Copy%29.png",
+    title: "Modern Mühendislik",
+    subtitle: "Yenilikçi çözümlerle geleceği bugünden inşa ediyoruz"
+  }
+];
 
 export const partnerLogos = [
   "100-",

@@ -1,7 +1,17 @@
-import React from 'react';
-import { ArrowRight, Award } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Award, ChevronLeft, ChevronRight } from 'lucide-react';
+import { heroSlides } from '../mock/data';
 
 const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -9,19 +19,68 @@ const Hero = () => {
     }
   };
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  };
+
   return (
     <section 
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image with Overlay */}
+      {/* Background Images Slider */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1519662978799-2f05096d3636"
-          alt="Modern Architecture"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black"></div>
+        {heroSlides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <img 
+              src={slide.image}
+              alt={slide.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black"></div>
+          </div>
+        ))}
+      </div>
+
+      {/* Slider Controls */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 sm:left-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 backdrop-blur-sm border border-white/20 p-3 rounded-full hover:bg-white/20 transition-all duration-300"
+      >
+        <ChevronLeft className="w-6 h-6 text-white" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 sm:right-8 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 backdrop-blur-sm border border-white/20 p-3 rounded-full hover:bg-white/20 transition-all duration-300"
+      >
+        <ChevronRight className="w-6 h-6 text-white" />
+      </button>
+
+      {/* Slider Indicators */}
+      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+        {heroSlides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`transition-all duration-300 rounded-full ${
+              index === currentSlide 
+                ? 'w-12 h-2' 
+                : 'w-2 h-2 hover:w-4'
+            }`}
+            style={{ 
+              backgroundColor: index === currentSlide ? '#00bc60' : 'rgba(255, 255, 255, 0.3)'
+            }}
+          />
+        ))}
       </div>
 
       {/* Content */}
@@ -33,13 +92,21 @@ const Hero = () => {
             <span className="text-sm font-medium" style={{ color: '#00bc60' }}>200+ İmza Atılan Kamu Projesi</span>
           </div>
 
-          {/* Main Heading */}
+          {/* Main Heading - Changes with slides */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
-            Güvenilir <span style={{ color: '#00bc60' }}>Deneyim</span>
+            {heroSlides[currentSlide].title.split(' ').map((word, i) => (
+              <span key={i}>
+                {word === 'Deneyim' || word === 'Yönetimi' || word === 'Mühendislik' ? (
+                  <span style={{ color: '#00bc60' }}>{word}</span>
+                ) : (
+                  word
+                )}{' '}
+              </span>
+            ))}
           </h1>
 
           <p className="text-xl sm:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
-            Sizin ihtiyaçlarınız için kusursuz çözümler sunuyoruz
+            {heroSlides[currentSlide].subtitle}
           </p>
 
           {/* CTA Buttons */}

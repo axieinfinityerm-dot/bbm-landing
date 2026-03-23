@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ayyildizProject } from '../mock/data';
-import { Award, Heart, Flag } from 'lucide-react';
+import { Award, Heart, Flag, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const AyyildizProject = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImage((prev) => (prev + 1) % ayyildizProject.images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prev) => (prev - 1 + ayyildizProject.images.length) % ayyildizProject.images.length);
+  };
+
   return (
     <section id="projects" className="py-24 bg-zinc-950 relative overflow-hidden">
       {/* Decorative Background */}
@@ -22,26 +32,88 @@ const AyyildizProject = () => {
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-          {/* Left: Image */}
+          {/* Left: Image Gallery Slider */}
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-              <img 
-                src="https://images.pexels.com/photos/2464417/pexels-photo-2464417.jpeg"
-                alt="Malatya Ayyıldız Projesi"
-                className="w-full h-[600px] object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+              {/* Main Image */}
+              <div className="relative h-[600px]">
+                {ayyildizProject.images.map((image, index) => (
+                  <img 
+                    key={index}
+                    src={image}
+                    alt={`Malatya Ayyıldız Projesi ${index + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                      index === currentImage ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                ))}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                
+                {/* Navigation Buttons */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 backdrop-blur-sm border border-white/20 p-3 rounded-full hover:bg-black/80 transition-all duration-300 z-10"
+                >
+                  <ChevronLeft className="w-6 h-6 text-white" />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 backdrop-blur-sm border border-white/20 p-3 rounded-full hover:bg-black/80 transition-all duration-300 z-10"
+                >
+                  <ChevronRight className="w-6 h-6 text-white" />
+                </button>
+
+                {/* Image Indicators */}
+                <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                  {ayyildizProject.images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImage(index)}
+                      className={`transition-all duration-300 rounded-full ${
+                        index === currentImage ? 'w-8 h-2' : 'w-2 h-2 hover:w-4'
+                      }`}
+                      style={{ 
+                        backgroundColor: index === currentImage ? '#00bc60' : 'rgba(255, 255, 255, 0.5)'
+                      }}
+                    />
+                  ))}
+                </div>
               
-              {/* Overlay Badge */}
-              <div className="absolute bottom-8 left-8 right-8">
-                <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Flag className="w-6 h-6 text-red-500" />
-                    <span className="text-white font-bold text-lg">Türk Bayrağı İlhamlı Tasarım</span>
+                {/* Overlay Badge */}
+                <div className="absolute bottom-8 left-8 right-8 z-10">
+                  <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-xl p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Flag className="w-6 h-6 text-red-500" />
+                      <span className="text-white font-bold text-lg">Türk Bayrağı İlhamlı Tasarım</span>
+                    </div>
+                    <p className="text-gray-300 text-sm">
+                      Mekânın formu Türk bayrağının dalgalanışından ilham alıyor
+                    </p>
                   </div>
-                  <p className="text-gray-300 text-sm">
-                    Mekânın formu Türk bayrağının dalgalanışından ilham alıyor
-                  </p>
+                </div>
+              </div>
+
+              {/* Thumbnail Gallery */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-sm p-4">
+                <div className="flex gap-3 overflow-x-auto scrollbar-hide">
+                  {ayyildizProject.images.map((image, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImage(index)}
+                      className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                        index === currentImage ? 'scale-110' : 'opacity-50 hover:opacity-100'
+                      }`}
+                      style={{ 
+                        borderColor: index === currentImage ? '#00bc60' : 'transparent'
+                      }}
+                    >
+                      <img 
+                        src={image}
+                        alt={`Thumbnail ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
